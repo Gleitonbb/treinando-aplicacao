@@ -3,12 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>teste</title>
-    <style>
-        *{
+    <title>Document</title>
+</head>
+<style>
+    
+*{
     padding: 0px;
     margin: 0px;
     border: none;
+}
+.lix{
+    width: 25px;
+    cursor: pointer;
+    
+
 }
 main{
     display: flex;
@@ -42,9 +50,11 @@ button#btn_copiar2{
     border-radius: 10px;
     padding: 10px;
     margin: 5px 0px;
-    cursor: pointer;
     margin-left: 10%;
     margin-top: 10%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
     
     
 }
@@ -70,39 +80,44 @@ button#btn_copiar2{
     justify-content: center;
     align-items: center;
     margin: 5px;
-    height: 500px;
+    height: 600px;
     width: 300px;
 }
-    </style>
-
-</head>
+</style>
 <body>
     <main>
-           <div id="caixa1" class="caixa">
-           <div id="t1" class="time c1">flamengo</div>
-           <div id="t2" class="time c1">Palmeiras</div>
-           <div id="t3" class="time c1">São Paulo</div>
-           <div id="t4" class="time c1">Corintians</div>
-           <div id="t5" class="time c1">Vasco</div>
-           <div id="t6" class="time c1">Fluminense</div>
-        </div>
-        <button id="botao">Tranferir</button>
-        <div id="caixa2" class="caixa">
-        </div>
+    <div id="caixa1" class="caixa">
+            
+            </div>
+            <button id="btn_copiar">Tranferir</button>
+            <div id="caixa2" class="caixa">
+            </div>
     </main>
-    <script>
-    const caixa = document.querySelector('#caixa1')
+   <script>
+     const caixa = document.querySelector('#caixa1')
+     const times = ['Palmeiras','São Paulo','Botafogo','Vasco', 'A.Mineiro','internacional','Corintians']
+
+     times.map((upu,pos)=>{
+     const novoElem = document.createElement('div')
+     novoElem.setAttribute("id","t"+pos)
+     novoElem.setAttribute("class","time c1")
+     novoElem.innerHTML = upu
+
+     const lixeira = document.createElement('img')
+     lixeira.setAttribute('class','lix')
+     lixeira.setAttribute('src','imagem/lixeira.png')
+     
 
 
-    const newElement = document.createElement('div')
-    newElement.setAttribute("id","t7")
-    newElement.setAttribute("class","time c1")
-    newElement.innerHTML = 'Cruzeiro'
-    caixa.appendChild(newElement)
-   
+     novoElem.addEventListener("click",(evt)=>{
+        console.log(evt.target.parentNode)
+         caixa.removeChild(evt.target.parentNode)
 
-
-    
-    </script>
+        })
+        novoElem.appendChild(lixeira)
+        caixa.appendChild(novoElem)  
+     
+     })
+ </script>
 </body>
 </html>
